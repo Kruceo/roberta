@@ -1,0 +1,19 @@
+{
+  "name": "configurator",
+  "version": "0.0.0",
+  "description": "Simple configurator for node projects",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kruceo/configurator.git"
+  },
+  "author": "kruceo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kruceo/configurator/issues"
+  },
+  "homepage": "https://github.com/kruceo/configurator#readme"
+}
