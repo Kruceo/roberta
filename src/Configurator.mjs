@@ -6,33 +6,33 @@ const defaultOptions = {
 }
 
 class Parser{
-    constructor(name,process){
-        this.name = name
+    constructor(type,process){
+        this.type = type
 
         this.process = process
     }
 
     get exp(){
-        return new RegExp("^@"+this.name + '\\{.*\\}$')
+        return new RegExp("^@"+this.type + '\\{.*\\}$')
     }
 
     parse(value){
-        let v = value.slice(2 + this.name.length,value.length -1)
+        let v = value.slice(2 + this.type.length,value.length -1)
 
         if(this.process)
         v = this.process(v)
         return v
     }
     translate(value){
-        return `@${this.name}{${value}}`
+        return `@${this.type}{${value}}`
     }
 }
 
 const typeParsers = [
-    new Parser('json',(v)=>JSON.parse(v)),
+    new Parser('object',(v)=>JSON.parse(v)),
     new Parser('number',(v)=>parseFloat(v)),
-    new Parser('sla',(v)=>JSON.parse(v)),
-    new Parser('sla',(v)=>JSON.parse(v)),
+    new Parser('boolean',(v)=>v=="true"?true:false),
+    new Parser('regex',(v)=>new RegExp(v)),
 ]
 
 export default class Configurator {
@@ -81,7 +81,8 @@ export default class Configurator {
         Object.entries(obj).forEach(each=>{
             
             if(each[0]=='')return;
-            newFile += each[0]+"="+each[1]+"\n"
+            let v = this.translateToType(each[1])
+            newFile += each[0]+"="+v+"\n"
         })
         fs.writeFileSync(this.configFile,newFile)
     }
@@ -101,5 +102,26 @@ export default class Configurator {
 
         return selection
     }
+    translateToType(value){
+
+        let type = typeof(value)
+
+        let selection = value
+
+        for (const parser of typeParsers) {
+            if(parser.type == type){
+                selection = parser.translate(value)
+                break
+            }
+           
+        }
+
+        return selection
+    }
 }
 
+let config = new Configurator()
+
+config.get('teste',123456)
+
+fs.writeFileSync('teste.json','')
