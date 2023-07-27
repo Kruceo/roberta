@@ -113,7 +113,6 @@ export default class Configurator {
                 selection = parser.translate(value)
                 break
             }
-           
         }
 
         return selection
@@ -122,6 +121,6 @@ export default class Configurator {
 
 let config = new Configurator()
 
-config.get('teste',123456)
+console.log(config.get('gestes',123456))
 
 fs.writeFileSync('teste.json','')
