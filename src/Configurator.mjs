@@ -19,7 +19,7 @@ export default class Configurator {
         this.configFile = path.resolve(opt.file)
         this.configPath = path.resolve(this.configFile, '../')
 
-        if(!fs.existsSync(this.configPath))fs.mkdirSync(this.configPath,{recursive})
+        if(!fs.existsSync(this.configPath))fs.mkdirSync(this.configPath,{recursive:true})
         if(!fs.existsSync(this.configFile))fs.writeFileSync(this.configFile,'')
     }
     get(key,defaultValue){
