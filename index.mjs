@@ -1,3 +1,3 @@
 import Configurator from './src/Configurator.mjs'
-
-export { Configurator }
+import { Parser } from './src/Parser.mjs'
+export { Configurator ,Parser }
