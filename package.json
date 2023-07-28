@@ -1,6 +1,6 @@
 {
-  "name": "configurator",
-  "version": "0.0.3",
+  "name": "roberta",
+  "version": "0.0.4",
   "description": "Simple configurator for node projects",
   "main": "index.mjs",
   "scripts": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/kruceo/configurator.git"
   },
-  "author": "kruceo",
+  "author": "Kruceo",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kruceo/configurator/issues"
