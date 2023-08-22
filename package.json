@@ -1,6 +1,6 @@
 {
   "name": "roberta",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simple configurator for node projects",
   "main": "index.mjs",
   "scripts": {

@@ -10,7 +10,7 @@ const typeParsers = [
     new Parser('object',(v)=>JSON.parse(v)),
     new Parser('number',(v)=>parseFloat(v)),
     new Parser('boolean',(v)=>v=="true"?true:false),
-    new Parser('regex',(v)=>new RegExp(v)),
+    // new Parser('regex',(v)=>new RegExp(v)),
 ]
 
 export default class Configurator {
@@ -27,7 +27,7 @@ export default class Configurator {
         let selection = null
         if(!obj[key]){
             if(defaultValue){
-                this.addToFile(key,defaultValue)
+                this.set(key,defaultValue)
                 selection = defaultValue
             }
             else return selection;
@@ -50,7 +50,7 @@ export default class Configurator {
         })
         return obj
     }
-    addToFile(key,value){
+    set(key,value){
         let file = fs.readFileSync(this.configFile,'utf-8')
         let newFile = ''
         let obj = this.getFileObj()
