@@ -17,7 +17,7 @@ npm install roberta
 To use the library, import the `Configurator` class and create an instance by specifying the configuration file's name.
 
 ```javascript
-const { Configurator } = require('my-configuration-library');
+import {Configurator} from 'my-configuration-library';
 
 const cfg = new Configurator({ file: 'my-cfg.cfg' });
 ```
