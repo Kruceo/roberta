@@ -1,60 +1,51 @@
-# Roberta
+# Roberta: Node Project Configurator 
 
-My Configuration Library is a lightweight JavaScript library designed to simplify the management of configuration files with a custom syntax. This library provides an intuitive interface for reading and modifying configuration values within a configuration file.
+**Roberta** is a Node project configurator that simplifies the process of managing project configurations. It allows you to easily read, modify, and save configuration settings in a specified file. With Roberta, you can streamline your configuration management in Node.js projects. 
 
-## Installation
+## Installation 
 
-You can install the library using npm:
+To use Roberta in your Node.js project, install it using npm: 
 
-```bash
-npm install roberta
-```
+```bash 
+npm install roberta 
+``` 
 
-## Usage
+## Usage 
 
-### Initialization
+Import the `Configurator` class from 'roberta' and create an instance of it, specifying the configuration file. You can then use the `set`, `get`, and `getOrCreate` methods to manage your project's configuration. 
 
-To use the library, import the `Configurator` class and create an instance by specifying the configuration file's name.
+```javascript 
+import { Configurator } from 'roberta'; 
 
-```javascript
-import {Configurator} from 'my-configuration-library';
+// Create a new Configurator instance with the specified file 
+const cfg = new Configurator({ file: 'config.txt' }); 
 
-const cfg = new Configurator({ file: 'my-cfg.cfg' });
-```
+// Set a configuration value 
+cfg.set('test', 'steel test'); 
 
-### Get Method
+// Get a configuration value 
+const testValue = cfg.get('test'); 
 
-Retrieve values from the configuration file using the `get` method. You can provide a default value to be returned if the key doesn't exist.
+// Get a configuration value or create it with a default value 
+const otherTestValue = cfg.getOrCreate('othertest', 'my default value hehe'); 
+``` 
 
-```javascript
-const month = cfg.get('month'); // Returns the value if 'month' key exists
-const year = cfg.get('year', 2023); // Returns 2023 if 'year' key doesn't exist
-```
+In this example, the configuration settings are saved in the 'config.txt' file with the following format: 
 
-**Effect on Configuration File:**
+```plaintext 
+test=steel test 
+othertest=my default value hehe 
+``` 
 
-If the provided key exists in the configuration file, the `get` method returns the corresponding value. If the key doesn't exist, the method returns the default value provided. The configuration file will be changed with the value;
+These configurations can be easily managed using the intuitive methods provided by Roberta. 
 
-### Set Method
+Feel free to incorporate Roberta into your Node.js projects to streamline your configuration management. 
 
-Set new values in the configuration file using the `set` method.
+## Contributing 
 
-```javascript
-cfg.set('person', {name:'Lian',nick:'AFKplayer'})
-```
+If you encounter issues or have suggestions for improvements, please feel free to open an [issue](https://github.com/your/repository/issues) or submit a [pull request](https://github.com/your/repository/pulls) on GitHub. 
 
-**Effect on Configuration File:**
+## Author 
 
-The `set` method updates or adds the specified key with the provided value in the configuration file. If the key already exists, its value is updated. If the key doesn't exist, it is added to the configuration file with the provided value.
-
-### Configuration File Syntax
-
-The configuration file follows a custom syntax with annotated values:
-
-```
-string=a normal string
-number=@number{2002}
-object=@object{[{"name":"test"}]}
-boolean=@boolean{false}
-
-```
+- [Website](https://kruceo.com)
+- [Donate](https://kruceo.com/donate)

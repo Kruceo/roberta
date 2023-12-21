@@ -43,6 +43,17 @@ class Configurator {
         })
         fs.writeFileSync(this.configFile, newFile)
     }
+    remove(key){
+        var obj = this.getFileAsObject()
+        var newFile = ''
+        Object.entries(obj).forEach(each => {
+            const [k, v] = each
+             console.log(k,key,key==k)
+            if(key==k)return;
+            newFile += `${k}=${Configurator.normalizeStr(v)}\n`
+        })
+        fs.writeFileSync(this.configFile,newFile)
+    }
 
     /**
      * Normalize strings to not corrupt the configuration file.
