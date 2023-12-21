@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kruceo/configurator.git"
+    "url": "git+https://github.com/kruceo/roberta.git"
   },
   "author": "Kruceo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kruceo/configurator/issues"
+    "url": "https://github.com/kruceo/roberta/issues"
   },
-  "homepage": "https://github.com/kruceo/configurator#readme",
+  "homepage": "https://github.com/kruceo/roberta#readme",
   "devDependencies": {
     "rollup": "^4.9.1"
   }
