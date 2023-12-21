@@ -1,10 +1,14 @@
 {
   "name": "roberta",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "Simple configurator for node projects",
-  "main": "index.mjs",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/test.js",
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/kruceo/configurator/issues"
   },
-  "homepage": "https://github.com/kruceo/configurator#readme"
+  "homepage": "https://github.com/kruceo/configurator#readme",
+  "devDependencies": {
+    "rollup": "^4.9.1"
+  }
 }

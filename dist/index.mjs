@@ -1,7 +1,7 @@
-import path from 'path'
-import fs from 'fs'
+import path from 'path';
+import fs from 'fs';
 
-const DEFAULT_OPTIONS = { file: 'project.conf' }
+const DEFAULT_OPTIONS = { file: 'project.conf' };
 
 class Configurator {
     /**
@@ -9,12 +9,12 @@ class Configurator {
      * @param {DEFAULT_OPTIONS} options 
      */
     constructor(options) {
-        const opt = { ...DEFAULT_OPTIONS, ...options }
+        const opt = { ...DEFAULT_OPTIONS, ...options };
 
-        this.configFile = path.resolve(opt.file)
-        this.configFolder = path.resolve(this.configFile, '../')
+        this.configFile = path.resolve(opt.file);
+        this.configFolder = path.resolve(this.configFile, '../');
 
-        if (!fs.existsSync(this.configFile)) fs.writeFileSync(this.configFile, "")
+        if (!fs.existsSync(this.configFile)) fs.writeFileSync(this.configFile, "");
     }
 
     /**
@@ -23,7 +23,7 @@ class Configurator {
      * @returns {string}
      */
     get(key) {
-        const value = this.getFileAsObject()[key]
+        const value = this.getFileAsObject()[key];
         return value
     }
 
@@ -33,15 +33,15 @@ class Configurator {
      * @param {string} value 
      */
     set(key, value) {
-        var obj = this.getFileAsObject()
-        obj[key] = Configurator.normalizeStr(value)
+        var obj = this.getFileAsObject();
+        obj[key] = Configurator.normalizeStr(value);
 
-        var newFile = ''
+        var newFile = '';
         Object.entries(obj).forEach(each => {
-            const [key, value] = each
-            newFile += `${key}=${Configurator.normalizeStr(value)}\n`
-        })
-        fs.writeFileSync(this.configFile, newFile)
+            const [key, value] = each;
+            newFile += `${key}=${Configurator.normalizeStr(value)}\n`;
+        });
+        fs.writeFileSync(this.configFile, newFile);
     }
 
     /**
@@ -60,24 +60,26 @@ class Configurator {
      * @returns {string}
      */
     getOrCreate(key, defaultValue) {
-        var value = this.get(key)
+        var value = this.get(key);
         if (value) return value
-        this.set(key, defaultValue)
+        this.set(key, defaultValue);
         return defaultValue
     }
 
     getFileAsObject() {
-        const content = fs.readFileSync(this.configFile, "utf-8")
-        var obj = {}
+        const content = fs.readFileSync(this.configFile, "utf-8");
+        var obj = {};
 
         content.split("\n").forEach(line => {
-            const [key, value] = line.split("=", 2)
+            const [key, value] = line.split("=", 2);
             if (!key | !value) return;
-            obj[key] = value.replace(/\\n/g, "\n")
-        })
+            obj[key] = value.replace(/\\n/g, "\n");
+        });
 
         return obj
     }
 }
 
-export default Configurator
+var index = { Configurator };
+
+export { Configurator, index as default };
