@@ -1,7 +1,7 @@
 // rollup.config.js
 
 module.exports =  {
-  input: 'index.mjs',
+  input: 'src/index.mjs',
   output: [
     {
       file: 'dist/index.js',
